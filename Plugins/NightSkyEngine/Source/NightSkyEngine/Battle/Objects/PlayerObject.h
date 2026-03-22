@@ -716,7 +716,7 @@ private:
 	//handles throwing objects
 	void HandleThrowCollision();
 	//checks kara cancel
-	bool CheckKaraCancel(EStateType InStateType, const FStateMachine& StateMachine);
+	bool CheckKaraCancel(EStateType InStateType, const FGameplayTag& CustomStateType, const FStateMachine& StateMachine);
 	//checks if a child object with a corresponding object id exists. if so, do not enter state 
 	bool CheckObjectPreventingState(int InObjectID) const;
 	//handles wall bounce
@@ -843,6 +843,9 @@ public:
 	// Get state machine by name.
 	UFUNCTION(BlueprintPure)
 	FStateMachine& GetStateMachine(FGameplayTag StateMachineName);
+	//Gets the state type of the current state.
+	UFUNCTION(BlueprintPure)
+	EStateType GetStateType() const;
 	// Get enable flags.
 	UFUNCTION(BlueprintPure)
 	int32 GetEnableFlags(FGameplayTag StateMachineName);
@@ -878,6 +881,9 @@ public:
 	//checks input condition
 	UFUNCTION(BlueprintPure)
 	bool CheckInput(const FInputCondition& Input);
+	//clear input buffer
+	UFUNCTION(BlueprintCallable)
+	void ClearInputBuffer();
 	//is attacking
 	UFUNCTION(BlueprintPure)
 	bool CheckIsAttacking() const;
@@ -922,6 +928,8 @@ public:
 	//remove whiff cancel option
 	UFUNCTION(BlueprintCallable)
 	void RemoveWhiffCancelOption(FGameplayTag Option);
+	UFUNCTION(BlueprintCallable)
+	void ClearMovesUsedInChain();
 	UFUNCTION(BlueprintCallable)
 	void EnableChainCancel(bool Enable);
 	//sets whiff cancel options enabled. off by default
@@ -1043,6 +1051,8 @@ public:
 	void SetTeamCooldown(int NewTeamIndex, int Cooldown);
 	UFUNCTION(BlueprintPure)
 	bool IsMainPlayer() const;
+	UFUNCTION(BlueprintPure)
+	APlayerObject* GetMainPlayer() const;
 	UFUNCTION(BlueprintPure)
 	bool IsOnScreen() const;
 	UFUNCTION(BlueprintCallable)
