@@ -37,10 +37,10 @@
 				"Linux",
 				"Mac"
 			]
+		},
+		{
+			"Name": "Aura",
+			"Enabled": true
 		}
-	],
-	"TargetPlatforms": [],
-	"AdditionalRootDirectories": [],
-	"AdditionalPluginDirectories": [],
-	"EpicSampleNameHash": ""
+	]
 }
