@@ -19,16 +19,16 @@ FCollisionAnimationViewportClient::FCollisionAnimationViewportClient(const TShar
     // Set perspective as default view mode
     SetViewportType(LVT_Perspective);
     SetViewModes(VMI_Lit, VMI_Lit);
-}
-
-void FCollisionAnimationViewportClient::Tick(float DeltaSeconds)
-{
-    FEditorViewportClient::Tick(DeltaSeconds);
 
     // Set initial camera position and orientation
     SetViewLocation(FVector(0, 720, 175));
     SetViewRotation(FRotator(0, -90, 0));
     ViewFOV = 54;
+}
+
+void FCollisionAnimationViewportClient::Tick(float DeltaSeconds)
+{
+    FEditorViewportClient::Tick(DeltaSeconds);
 }
 
 FCollisionAnimationViewportClient::~FCollisionAnimationViewportClient()
